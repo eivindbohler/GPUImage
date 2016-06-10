@@ -119,6 +119,7 @@
 #import "GPUImageMonochromeFilter.h"
 #import "GPUImageOpacityFilter.h"
 #import "GPUImageHighlightShadowFilter.h"
+#import "GPUImageHighlightShadowTintFilter.h"
 #import "GPUImageFalseColorFilter.h"
 #import "GPUImageHSBFilter.h"
 #import "GPUImageHueFilter.h"
@@ -167,4 +168,5 @@
 #import "GPUImageColorConversion.h"
 #import "GPUImageColourFASTFeatureDetector.h"
 #import "GPUImageColourFASTSamplingOperation.h"
-
+#import "GPUImageVibranceFilter.h"
+#import "GPUImageSkinToneFilter.h"
