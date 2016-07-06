@@ -93,6 +93,15 @@ void setColorConversion709( GLfloat conversionMatrix[9] );
  */
 - (BOOL)addAudioInputsAndOutputs;
 
+/** To avoid live video freeze when starting a GPUImageMovieWriter capture:
+    1. At GPUImageVideCamera setup, call addAudioInputsAndOutputs
+    2. When needed, instead of
+         [imageViewCamera setAudioEncodingTarget:movieWriter]
+       use:
+         [imageViewCamera justSetAudioEncodingTarget:movieWriter]
+ */
+- (void)justSetAudioEncodingTarget:(GPUImageMovieWriter *)newValue;
+
 /** Remove the audio capture inputs and outputs from this session. Returns YES if the audio inputs and outputs
     were removed, or NO is they hadn't already been added.
  */

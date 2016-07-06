@@ -918,6 +918,16 @@ void setColorConversion709( GLfloat conversionMatrix[9] )
     [super setAudioEncodingTarget:newValue];
 }
 
+- (void)justSetAudioEncodingTarget:(GPUImageMovieWriter *)newValue
+{
+    if (newValue == nil) {
+        return;
+    }
+    addedAudioInputsDueToEncodingTarget = YES;
+
+    [super setAudioEncodingTarget:newValue];
+}
+
 - (void)updateOrientationSendToTargets;
 {
     runSynchronouslyOnVideoProcessingQueue(^{
