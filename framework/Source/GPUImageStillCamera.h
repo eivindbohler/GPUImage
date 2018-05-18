@@ -1,9 +1,10 @@
 #import "GPUImageVideoCamera.h"
 
 void stillImageDataReleaseCallback(void *releaseRefCon, const void *baseAddress);
+void GPUImageCreateSampleBuffer(CVPixelBufferRef cameraFrame, CMSampleBufferRef *sampleBuffer);
 void GPUImageCreateResizedSampleBuffer(CVPixelBufferRef cameraFrame, CGSize finalSize, CMSampleBufferRef *sampleBuffer);
 
-@interface GPUImageStillCamera : GPUImageVideoCamera
+@interface GPUImageStillCamera : GPUImageVideoCamera <AVCapturePhotoCaptureDelegate>
 
 /** The JPEG compression quality to use when capturing a photo as a JPEG.
  */
@@ -11,6 +12,8 @@ void GPUImageCreateResizedSampleBuffer(CVPixelBufferRef cameraFrame, CGSize fina
 
 // Only reliably set inside the context of the completion handler of one of the capture methods
 @property (readonly) NSDictionary *currentCaptureMetadata;
+
+@property (nonatomic, assign) AVCaptureFlashMode flashMode;
 
 // Photography controls
 - (void)capturePhotoAsSampleBufferWithCompletionHandler:(void (^)(CMSampleBufferRef imageSampleBuffer, NSError *error))block;
